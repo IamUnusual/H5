@@ -1,0 +1,372 @@
+<!doctype html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	    <meta name="format-detection" content="telephone=no, email=no"/>
+	    <meta http-equiv="Cache-Control" content="no-transform"/>
+	    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="Cache" content="no-cache" />
+		<meta charset="UTF-8" name="apple-itunes-app" content="app-id=1426313974, affiliate-data=myAffiliateData, app-argument=friendjump01://123">
+	    <title>哈灵浙江游戏—好朋友一起玩</title>
+	    <link rel="stylesheet" type="text/css" href="https://csspyj.happydw.cn/bxpyj/pure/lobby/hzmj/common.css"/>
+	    <link rel="stylesheet" type="text/css" href="https://csspyj.happydw.cn/bxpyj/nopure/lobby/hzmj/prompt/download_prompt.1.1.css" />
+	    <link rel="stylesheet" type="text/css" href="https://csspyj.happydw.cn/bxpyj/nopure/lobby/hzmj/trust/trust.guide.1.0.0.css">
+	    <script type="text/javascript">
+	        !function () {
+	            var cw = document.documentElement.clientWidth || document.body.clientWidth;
+	            cw = cw > 720 ? 720 : cw;
+	            var zoom = cw / 360;
+	            document.write('<style id="htmlzoom">html{font-size:' + (zoom * 50) + 'px;}</style>');
+	            window.addEventListener('resize', function () {
+	                cw = document.documentElement.clientWidth || document.body.clientWidth;
+	                if (cw > 720) cw = 720;
+	                zoom = cw / 360;
+	                document.getElementById('htmlzoom').innerHTML = 'html{font-size:' + (zoom * 50) + 'px;}';
+	            });
+	        }();
+	    </script>
+	    <style type="text/css">
+			*{box-sizing:border-box;}
+	    	body{background-color: #113630;}
+	    	.main{position:relative;width:7.2rem;margin:0 auto;}
+	    	.background{height:12rem;background: url(https://pngpyj.happydw.cn/bxpyj/lobby/zjmj/promotion/bg_zjmj_2.jpg) no-repeat;background-size: 100% 100%;}
+			.btn_download{position: absolute;z-index:2;top:8.81rem;left:.31rem;width:6.58rem;height:1.24rem;background:url(https://pngpyj.happydw.cn/bxpyj/lobby/zjmj/promotion/btn_download.png) no-repeat;background-size:100%;}
+			.qr_code_img{position: absolute;z-index:1;top:0;left:0;width:7.2rem;}
+			.thickdiv {  position: fixed; top: 0; left: 0; width: 100%;  height: 100%; background:#000000; border: 0 none; opacity: 0.9; filter:alpha(opacity=50); z-index:101;}
+			.prompt{ top:5%; right:18%; font-size:.36rem; color:#e3e3e3; letter-spacing:1px; line-height:.55rem; z-index:102;}
+			.prompt img{ margin:.2rem .3rem; width:.87rem; height:.87rem;}
+			.prompt span{ position:absolute;}
+			.prompt .browser{ top:2.5rem; left:1.3rem; font-size:.24rem; line-height:.3rem; text-align:center; color:#a3a3a3;}
+			.prompt .arrow{ top:-.5rem; right:-1rem; width:.98rem; height:.93rem; background:url(https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/ico_arrow.png) no-repeat; background-size:100% 100%;}
+			
+			.pup_confirm{display:none;position:fixed;z-index:99;bottom:1.55rem;left:50%;width:7.1rem;margin-left:-3.55rem;padding-bottom:.33rem;background:linear-gradient(to bottom,rgba(243,224,180,.95),rgba(227,202,145,.95));background:-webkit-linear-gradient(to bottom,rgba(243,224,180,.95),rgba(227,202,145,.95));background:-webkit-gradient(linear,0 0,0 100%,from(rgba(243,224,180,.95)),to(rgba(227,202,145,.95)));border:.02rem solid rgba(77,65,23,.47);border-radius:.25rem;}
+			.pup_confirm::after{content:"";position: absolute;top:0;left:0;width:100%;height:.5rem;border-top:.02rem solid #fff;border-radius:.25rem;}
+			.text_content{display:table-cell;padding:0 .2rem;width:7.06rem;min-height: 1.62rem;height:1.62rem;vertical-align: middle;}
+			.text_content .text{font-size:.44rem;line-height:1;color:#623810;text-align: center;}
+			.button_box {font-size:0;text-align:center;}
+			.button_box .btn{display: inline-block;width:2.4rem;height:.95rem;margin:0 .32rem;padding-top:.25rem;font-size:.48rem;line-height:1;color:#ffffff;text-align: center;}
+			.button_box .btn_left{background:url(https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/pup_btn_01.png) no-repeat;background-size:100% 100%;}
+			.button_box .btn_right{background:url(https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/pup_btn_02.png) no-repeat;background-size:100% 100%;}
+			.btn_backstage{position: absolute;z-index:2;top: 10.41rem;left: 1.61rem;width: 4.16rem;height: .63rem;background: url(https://pngpyj.happydw.cn/bxpyj/lobby/hzmj/share/btn_backstage.png) no-repeat;background-size: cover;}
+	    </style>
+	</head>
+
+	<body>
+		<div class="main">
+			<!-- 背景 -->
+			<p class="background"></p>
+			
+			<!-- 下载按钮 -->
+			<a class="btn_download" href="javascript:void(0)"></a>
+			<a class="btn_backstage" style="display:none;" href="javascript:void(0)"></a>
+						<img id="clubQrcode" class="qr_code_img" src="https://pngpyj.happydw.cn/pyjupload/1516872349091.png" />
+			<img id="gzhQrcode" class="qr_code_img" style="display:none;" src="https://pngpyj.happydw.cn/pyjupload/1516872349091.png" />
+			<div class="pup_confirm">
+				<div class="text_content">
+					<p id="confirm_text" class="text"></p>
+				</div>
+				<div class="button_box">
+					<a id="btn_open" class="btn btn_left" href="javascript:void(0)">打开</a>	
+					<a id="btn_upload" class="btn btn_right" href="javascript:void(0)">更新</a>	
+				</div>
+			</div>
+			<div class="thickdiv" id="thickdiv" style="display: none;"></div>
+			<!-- ios 提示 -->
+			<div class="pa prompt ios_prompt" style="display:none">
+				1. 点击右上角的<img src="https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/share_ios.png" title="分享" alt="分享">按钮<br>2. 选择<img src="https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/browser_ios.png" title="safari" alt="safari">就能进入游戏啦<span class="browser">在Safari中
+				<br>打开</span>
+				<span class="arrow"></span>
+			</div>
+			<!-- android 提示 -->
+			<div class="pa prompt android_prompt" style="display:none">
+				1. 点击右上角的<img src="https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/share_android.png" title="分享" alt="分享">按钮<br>2. 选择<img src="https://pngpyj.happydw.cn/bxpyj/lobby/common/promotion/browser_android.png" title="safari" alt="safari">就能进入游戏啦<span class="browser">在浏览器打开</span>
+				<span class="arrow"></span>
+			</div>
+			
+			<!-- 弹框-信任授权提示 -->
+            <div class="pup_trust" id="trustPup" style="display: none;">
+                <a class="btn_close" href="javascript:hidetrustPup();">×</a>
+                <h4 class="title">安装提示</h4>
+                <div class="con">
+                    <p class="text">①&nbsp;&nbsp;同意安装后，将自动在桌面开始安装</p>
+                    <div class="game">
+                        <div class="inline-box">
+                            <img class="img_zm" src="https://pngpyj.happydw.cn/bxpyj/lobby/jsmj/promotion/img_1.png">
+                        </div>
+                        <div class="inline-box">
+                            <img class="game_icon" src="https://pngpyj.happydw.cn/bxpyj/lobby/hzmj/promotion/ico_hlzjmj.png" />
+                            <p class="game_name">哈灵杭州麻将</p>
+                        </div>
+                    </div>
+                    <p class="text">②&nbsp;&nbsp;安装完成后，首次打开APP需要信任下方的描述文件</p>
+                    <img class="set_img" src="https://pngpyj.happydw.cn/bxpyj/lobby/jsmj/promotion/ios_setting.png" />
+                </div>
+                <!-- 按钮-去信任 -->
+                <a class="btn_trust" href="/INHOUSE_DBQP.mobileprovision">去信任</a>
+                <!-- 按钮-详细教程 -->
+                <a class="btn_detail" href="/guide_zj.html">详细教程></a>
+            </div>
+		</div>
+		<section>
+			<div class="wrapper_zj" style="display: none;">
+				<div class="step01"><a class="btnNext"></a></div>
+				<div class="step02" style="display: none;"><p class="itemImg"><img src="https://pngpyj.happydw.cn/bxpyj/lobby/hzmj/trust/guide.gif"></p><a class="btnTrust" href="/INHOUSE_DBQP.mobileprovision"></a></div>
+			</div>
+		</section>
+		<script type="text/javascript" src="https://jspyj.happydw.cn/bxpyj/base/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="https://jspyj.happydw.cn/bxpyj/util/webkit1.4.js" ></script>
+		<script type="text/javascript" src="https://jspyj.happydw.cn/bxpyj/base/requestParam.js" ></script>
+		<script type="text/javascript">
+			var pageOperateType = false;
+			var needDown = 0;
+			var autoGuide = 0;
+			var room = 0;
+			var reply = 0;
+			var page = 0;
+			var agentUrl = "";
+			$(function(){
+			
+			   //if(Webkit.isAlipay() || Webkit.isDingtalk() || Webkit.isMoWang() 
+               //     || (Webkit.isXianLiao() && (Webkit.isIos() || Webkit.isPad()))) {
+	           //     $(".btn_download").attr("href", "javascript:showHint();");
+	           //     
+	           //     return;
+	           // } else if (Webkit.isWenxin()) {
+	           // 	$(".btn_download").attr("href", "javascript:showHint();");
+	           // 	pending();
+	           // 	return ;
+	           //} 
+			
+				$(document).click(function (event) {
+					var id = $(event.target).attr('id');
+					if((id == 'thickdiv')){
+						hideHint();
+					}
+				});
+		
+				needDown = request.QueryString("needDown");
+				autoGuide = request.QueryString("autoGuide");
+				room = request.QueryString("room");
+				reply = request.QueryString("replay");
+				page = request.QueryString("page");
+				agentUrl = request.QueryString("agentUrl");
+				if (autoGuide == null) {
+					autoGuide = 0;
+				}
+				if(needDown == null) {
+					needDown = 0;
+				}
+				if (room == null) {
+					room = 0;
+				}
+				if (reply == null) {
+					reply = 0;
+				}
+				if (page == null) {
+					page = 0
+				}
+				
+				if (needDown >= 10) { // 老玩家,显示微信公众号
+					$("#clubQrcode").hide();
+					$("#gzhQrcode").show();
+				}
+				if(Webkit.isWenxin()) {
+					$(".btn_download").attr("href", "javascript:showHint();");
+					if (agentUrl != undefined && agentUrl != null && agentUrl.length > 10) {
+						$(".btn_backstage").attr("href", decodeURIComponent(agentUrl));
+						$(".btn_backstage").show();
+					}
+					if(document.referrer.match('iosjump.html')) {
+						showHint();
+					}
+					if (autoGuide == 1) {
+						showHint();
+					}
+				} else {
+					if(Webkit.isIos() || Webkit.isPad()) {
+						$(".btn_download").click(function() {
+                            
+	                        
+	                        if (room == 0 && reply == 0) {
+						    	$(".btn_download").attr("href", "https://itunes.apple.com/cn/app/id1426313974");
+						    } else if (room > 0 && reply == 0) {
+							    $("meta[name='apple-itunes-app']").attr('content','app-id=1426313974, affiliate-data=myAffiliateData, app-argument=friendjump01://pyj?room=' + room);
+							    $(".btn_download").attr("href", "https://itunes.apple.com/cn/app/id1426313974");
+						    } else if (room == 0 && reply > 0) {
+							    $("meta[name='apple-itunes-app']").attr('content','app-id=1426313974, affiliate-data=myAffiliateData, app-argument=friendjump01://pyj?replay=' + reply);
+							    $(".btn_download").attr("href", "https://itunes.apple.com/cn/app/id1426313974");
+						    }
+						});
+					} else {
+							if (page == 0) {
+								if(room > 0) {
+									var ifr = document.createElement('iframe');
+						            ifr.src ="friendhlhzmj://pyj?room=" + room;
+						            document.body.appendChild(ifr);
+						            ifr.style.display = 'none';
+						            $(".btn_download").attr("href", "http://t5g6.boxiangyx.com/2ebdf2/11610000701012001.apk");
+									$("meta[name='apple-itunes-app']").attr('content','app-id=1426313974, affiliate-data=myAffiliateData, app-argument=friendjump01://pyj?room=' + room);
+								} else if(reply > 0) {
+									var ifr = document.createElement('iframe');
+						            ifr.src ="friendhlhzmj://pyj?replay=" + reply;
+						            document.body.appendChild(ifr);
+						            ifr.style.display = 'none';
+						            $(".btn_download").attr("href", "http://t5g6.boxiangyx.com/2ebdf2/11610000701012001.apk");
+						            $("meta[name='apple-itunes-app']").attr('content','app-id=1426313974, affiliate-data=myAffiliateData, app-argument=friendjump01://pyj?replay=' + reply);
+								} else {
+									var ifr = document.createElement('iframe');
+									ifr.src ="friendhlhzmj://room.hlddz:80";
+									ifr.style.display = 'none';
+									document.body.appendChild(ifr);
+									$(".btn_download").attr("href", "javascript:window.open('http://t5g6.boxiangyx.com/2ebdf2/11610000701012001.apk');");
+								}
+							} else if (page == 1) {
+								 $(".btn_download").attr("href", "http://t5g6.boxiangyx.com/2ebdf2/11610000701012001.apk");
+								 $(".btn_download").css("background", "url(https://pngpyj.happydw.cn/bxpyj/lobby/hlddz/btn_download_01.png) no-repeat");
+								 $(".btn_download").css("background-size", "100%");
+							}
+							setTimeout(function(){
+								if(ifr){
+									document.body.removeChild(ifr);
+								}
+								if(page == 0){
+									var newurl = '';
+									var newnum = 0;
+									var url = window.location.href;
+									if (url.indexOf('page=0')) {
+										url = url.replace(/page=0/, "pages=0");
+									}
+									if (url.indexOf('?') > 0) {
+										location.href = url + "&page=1";
+									} else {
+										location.href = url + "?page=1";
+									}
+								}
+							}, 1200);
+							
+					}
+				}
+		 		if (autoGuide == 1) {
+		 			
+		 		}
+		 		if((Webkit.isIos() || Webkit.isPad()) && !Webkit.isWenxin()) {
+					var a = document.createElement("a");
+		            if (!a.click) {
+		              // window.location = "friendjump01://123";
+		         		//       return;
+		            }
+		            if (room == 0 && reply == 0) {
+				    	a.setAttribute("href", "friendjump01://123");
+				    } else if (room > 0 && reply == 0) {
+				        
+				         a.setAttribute("href", "friendjump01://123?room=" + room);
+				    } else if (room == 0 && reply > 0) {
+				        
+				        a.setAttribute("href", "friendjump01://123?replay=" + replay);
+				    }
+		            a.style.display = "none";
+		            document.body.appendChild(a);
+		            a.click();
+				}
+			});
+		
+			var showHint = function(){
+				if(Webkit.isIos() || Webkit.isPad()) {
+					$(".thickdiv").show();
+					$(".ios_prompt").show();
+				} else {
+					$(".thickdiv").show();
+					$(".android_prompt").show();
+				}
+		    }
+		
+			var showConfirm = function(){
+		   		$(".pup_confirm").show();
+		   		$(".thickdiv").show();
+		    }
+		   
+		    var hideConfirm = function(){
+		   		$(".pup_confirm").hide();
+		   		$(".thickdiv").hide();
+		    }
+		
+		    var hideHint = function(){
+				$(".thickdiv").hide();
+				$(".ios_prompt").hide();
+				$(".android_prompt").hide();
+		    }
+		
+		
+			$("#btn_upload").click(function(){
+					window.open('http://t5g6.boxiangyx.com/2ebdf2/11610000701012001.apk');
+					hideConfirm();
+				});
+		
+			$("#btn_open").click(function(){
+					var ifr = document.createElement('iframe');
+					ifr.src ="friendhlhzmj://room.hlddz:80";
+					ifr.style.display = 'none';
+					document.body.appendChild(ifr);
+					hideConfirm();
+			});
+		
+			var comfirm = function() {
+				$("#confirm_text").text("浙江麻将全新上线,是否更新？");	
+				showConfirm();
+			}
+			
+			function getIOSVersion() {
+				var agent = navigator.userAgent.toLowerCase() ;
+				var version;
+				if (agent.indexOf("like mac os x") > 0) {
+					//ios
+					var regStr_saf = /os [\d._]*/gi ;
+					var verinfo = agent.match(regStr_saf) ;
+					version = (verinfo+"").replace(/[^0-9|_.]/ig,"").replace(/_/ig,".");
+				}
+				var version_str = version+"";
+				if (version_str != "undefined" && version_str.length > 0) {
+					version = version.split(".")[0];
+				}
+				if (version == null || version == "") {
+					version = 0;
+				}
+				return version;
+			}
+			function showtrustPup() {
+                $("#trustPup").show();
+            }
+            function hidetrustPup() {
+                $("#trustPup").hide();
+            }
+            
+            function pending() {
+				var script = document.createElement('script');
+				script.src = 'https://www.google.com/gtag/js?id=UA-811112224-1'; 
+				script.onabort = pending;
+				script.onerror = pending;
+				document.body.appendChild(script);
+			}
+			
+			$(".btnNext").click(function() {
+				$(".step01").hide();
+				$(".step02").show();
+			});
+		</script>
+		
+			<script>
+				var _hmt = _hmt || [];
+				(function() {
+				  var hm = document.createElement("script");
+				  hm.src = "https://hm.baidu.com/hm.js?370b6b9ccc8f075c484160c753dc1d51";
+				  var s = document.getElementsByTagName("script")[0]; 
+				  s.parentNode.insertBefore(hm, s);
+				})();
+			</script>
+		
+	</body>
+</html>

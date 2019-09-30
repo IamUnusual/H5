@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>callapp-lib示例</title>
+    <style>
+        #call-button {
+            display: inline-block;
+            margin-top: 50px;
+            padding: 10px;
+            border: 1px solid #000;
+            color: #c30;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body>
+<div id='call-button'>点击唤起蚂蚁森林</div>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/index.umd.js"></script>
+
+<script>
+    const option = {
+        scheme: {
+            protocol: 'alipays'
+        },
+        intent: {
+            package: 'com.eg.android.AlipayGphone',
+            scheme: 'alipays',
+        },
+        fallback: 'https://www.baidu.com',
+        timeout: 2000,
+    };
+    const lib = new CallApp(option);
+    const callButton = document.querySelector('#call-button');
+    //源代码有问题
+    callButton.addEventListener('click', () => {
+        lib.open({
+        path: 'platformapi/startapp?appId=60000002',
+    });
+    });
+    /*
+        callButton.addEventListener('click',function () {
+            lib.open({
+                path:'',
+            });
+        });
+    */
+    // 因为业务需要，我们需要添加 outChain 属性
+    // 但是这样生成出来的 scheme 稍显复杂，所以下面的 log 其实是移除了 outChain 属性的
+    // outChain 很少有同学会使用到，所以更方便大家理解
+
+    // weixin://profile
+    console.log(lib.generateScheme({path: ''}));
+    // intent://profile#Intent;package=com.youku.shortvideo;scheme=weixin;S.browser_fallback_url=https%3A%2F%2Fdianliu.youku.com%2Fservice%2Fdownload;end;
+    console.log(lib.generateIntent({path: 'profile'}));
+    //  https://flash-link.youku.com?action=profile
+    console.log(lib.generateUniversalLink({path: 'profile'}));
+</script>
+</body>
+</html>

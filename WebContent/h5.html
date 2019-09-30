@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>唤醒App</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			.main {
+				    background-color: #ebc8a2;
+				position: relative;
+			}
+
+			#bgCoverOPen {
+				width: 100%;
+				background-color: rgba(0, 0, 0, 0.5);
+				 display: none; 
+				z-index: 999999;
+				position: absolute;
+				height: 100%;
+			}
+
+			.bg {
+				width: 100%;
+			}
+
+			#call-button {
+				background-image: url(img/fx_button_jrfj.png);
+				width: 150px;
+				height: 50px;
+				background-repeat: no-repeat;
+				background-size: 150px 50px;
+				border: 0;
+				background-color: transparent;
+				display: block;
+
+				position: absolute;
+
+				left: 50%;
+				margin-left: -75px;
+				bottom: 15%;
+
+				padding: 10px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- <div id='call-button'>点击唤起与兴互娱</div> -->
+		<!-- 页面容器 -->
+		<div class="main">
+
+			<!--微信遮蔽罩  -->
+			<div id="bgCoverOPen">
+				<img alt="tip" src="img/fx_img_dh.png" style="width: 96%;">
+			</div>
+			<!-- 背景 -->
+			<img alt="bg" src="img/fenxiang2.jpg" class="bg">
+			<!-- 事件捆绑按钮 -->
+			<button id='call-button'></button>
+		</div>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<script src="js/jquery-3.0.0.min.js"></script>
+		<script src="js/index.umd.js"></script>
+		<script>
+			/* 全局定时器--跳转  */
+			$("#call-button").click(function() {
+				setInterval(function() {
+					window.location.href = 'http://www.yuxing18.com/downloadGame2.html';
+				}, 5000);
+
+			})
+
+			//ＵＡ标识转大写字母
+			var ua = window.navigator.userAgent.toLowerCase();
+			//alert(ua);
+			//微信端处理
+			if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+				$("#bgCoverOPen").show(); //提示在浏览器打开的蒙板
+			} else {
+				/*-----------------------处理UrlParam--------------*/
+				var UrlParam = window.location.search; //获取URL参数
+				UrlParam = UrlParam.substr(1); //处理？字符
+				//分割url参数
+				var aaa = new Array();
+				aaa = UrlParam.split('&')
+				//获取参数个数《k,v》
+				var bbb, ccc = new Array();
+				bbb = aaa[0].split('=')
+				ccc = aaa[1].split('=')
+				//打印参数值
+				console.log(bbb[1])
+				console.log(ccc[1])
+				/*---------------唤醒App----------------*/
+				var schemaname = bbb[1];
+				var rooId = ccc[1];
+				const option = {
+					scheme: {
+						protocol: schemaname
+					},
+					intent: {
+						package: 'com.youda.game820',
+						scheme: schemaname,
+					},
+					//唤醒失败时跳转路径
+					appstore: 'http://www.yuxing18.com/downloadGame2.html',
+					fallback: 'http://www.yuxing18.com/downloadGame2.html',
+					timeout: 2500,
+				};
+				const lib = new CallApp(option);
+				const callButton = document.querySelector('#call-button');
+				/*   callButton.addEventListener('click', () = > {
+            lib.open({
+            // path: 'platformapi/startapp?appId=60000002',
+            path: '?roomId=' + rooId,
+        });
+    }); */
+				callButton.addEventListener('click', function() {
+					lib.open({
+						path: '?roomId=' + rooId,
+					});
+				});
+
+
+				// 因为业务需要，我们需要添加 outChain 属性
+				// 但是这样生成出来的 scheme 稍显复杂，所以下面的 log 其实是移除了 outChain 属性的
+				// outChain 很少有同学会使用到，所以更方便大家理解
+				// weixin://profile
+				console.log(lib.generateScheme({
+					path: ''
+				}));
+				// intent://profile#Intent;package=com.youku.shortvideo;scheme=weixin;S.browser_fallback_url=https%3A%2F%2Fdianliu.youku.com%2Fservice%2Fdownload;end;
+				console.log(lib.generateIntent({
+					path: 'profile'
+				}));
+				//  https://flash-link.youku.com?action=profile
+				console.log(lib.generateUniversalLink({
+					path: 'profile'
+				}));
+
+			}
+		</script>
+	</body>
+</html>

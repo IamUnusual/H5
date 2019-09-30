@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>唤醒idnex2</title>
+<style>
+#bgCoverOPen {
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	display: none;
+	position: absolute;
+	z-index: 999999;
+}
+
+.main {
+	background-color: red;
+	background-image: url(img/fenxiang2.jpg);
+}
+
+#call-button {
+	background-image: url(img/fx_button_jrfj.png);
+	width: 150px;
+	height: 50px;
+	background-repeat: no-repeat;
+	background-size: 150px 50px;
+	border: 0;
+	background-color: transparent;
+	display: block;
+	margin: 0 auto;
+	position: absolute;
+	z-index: 10;
+	left: 28%;
+	bottom: 13%;
+	padding: 10px;
+	color: #c30;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.container {
+	width: 1080px;
+	height: 1334px;
+	background-color: red;
+	background: url(fx_img_bg_2.png) no-repeat;
+	position: relative;
+}
+</style>
+</head>
+<body>
+	<!-- 页面容器 -->
+	<div class="main">
+		<!--微信遮蔽罩  -->
+		<div id="bgCoverOPen">
+			<img alt="tip" src="img/fx_img_dh.png" style="width: 96%;">
+		</div>
+		<div class="container">
+			<button id='call-button'></button>
+		</div>
+	</div>
+	<script src="js/jquery-3.0.0.min.js"></script>
+	<script src="js/index.umd.js"></script>
+	<script>
+		//ＵＡ标识转大写字母
+		var ua = window.navigator.userAgent.toLowerCase();
+		//alert(ua);
+		//微信端处理
+		if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+			$("#bgCoverOPen").show(); //提示在浏览器打开的蒙板
+		}
+	</script>
+</body>
+</html>
